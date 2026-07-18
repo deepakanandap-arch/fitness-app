@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FitFlow — Flow Gaps</title>
+<style>
+  :root{
+    --bg:#0E0E11;
+    --surface:#1A1A1E;
+    --surface-2:#222227;
+    --border:#2A2A2F;
+    --text:#FFFFFF;
+    --text-muted:#8C8C93;
+    --primary:#8B3FFA;
+    --primary-dim: rgba(139,63,250,.14);
+    --premium:#F0B429;
+    --premium-dim: rgba(240,180,41,.12);
+    --error:#E5484D;
+    --success:#3DD68C;
+    --success-dim: rgba(61,214,140,.12);
+    --overlay: rgba(6,6,8,.72);
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:#F4F3F6; color:#1C1C1F;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding:40px 32px 80px;
+  }
+  .page-head{ max-width:1180px; margin:0 auto 36px; }
+  .page-head h1{ font-size:1.3rem; margin:0 0 6px; }
+  .page-head .flow{ color:#6B6B72; font-size:.85rem; }
+  .page-head .flow b{ color:#1C1C1F; }
+  .group{ max-width:1180px; margin:0 auto 44px; }
+  .group-label{ font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#8A8A92; margin-bottom:14px; }
+  .row{ display:flex; gap:28px; flex-wrap:wrap; align-items:flex-start; }
+  .cell{ width:300px; }
+  .cell-label{ font-size:.72rem; font-weight:600; color:#4B4B53; margin-bottom:10px; }
+
+  .phone{
+    width:300px; height:640px; border-radius:34px; background:var(--bg);
+    position:relative; overflow:hidden; box-shadow:0 20px 40px rgba(20,20,25,.18);
+    font-size:14px; color:var(--text);
+  }
+  .phone .stripe-top{
+    height:180px; background:
+      repeating-linear-gradient(-45deg, #17171b 0px, #17171b 10px, #131316 10px, #131316 20px);
+  }
+  .phone .stripe-top.short{ height:88px; }
+  .back-btn{
+    position:absolute; top:18px; left:18px; width:34px; height:34px; border-radius:50%;
+    background:var(--surface-2); display:flex; align-items:center; justify-content:center;
+    color:var(--text-muted); font-size:16px;
+  }
+  .sheet{
+    position:absolute; left:0; right:0; bottom:0; top:180px;
+    background:var(--surface); border-radius:24px 24px 0 0; padding:22px 20px;
+    display:flex; flex-direction:column;
+  }
+  .sheet.flush{ top:0; border-radius:0; }
+  .sheet.tall{ top:88px; overflow-y:auto; }
+  .sheet.tight .row-item{ padding:10px 2px; }
+  .sheet.tight .section-label{ margin:14px 0 2px; }
+  .h1t{ font-size:1.15rem; font-weight:700; margin:0 0 4px; }
+  .h1t b{ color:var(--primary); }
+  .sub{ color:var(--text-muted); font-size:.8rem; margin:0 0 18px; line-height:1.4; }
+
+  .field{
+    background:var(--surface-2); border:1px solid var(--border); border-radius:12px;
+    padding:13px 14px; font-size:.85rem; color:var(--text); margin-bottom:12px;
+  }
+  .field.placeholder{ color:var(--text-muted); }
+
+  .btn{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    border-radius:999px; padding:14px; font-weight:700; font-size:.85rem;
+    border:none; cursor:default; text-align:center;
+  }
+  .btn-primary{ background:var(--primary); color:#fff; }
+  .btn-premium{ background:var(--premium); color:#1C1200; }
+  .btn-ghost{ background:transparent; border:1px solid var(--border); color:var(--text); }
+  .btn-success{ background:var(--success); color:#04150C; }
+
+  .row-item{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:13px 2px; border-bottom:1px solid var(--border); font-size:.85rem;
+  }
+  .row-item:last-child{ border-bottom:none; }
+  .row-item .k{ color:var(--text-muted); }
+  .row-item .v{ font-weight:600; }
+  .chev{ color:var(--text-muted); font-size:.8rem; }
+
+  .avatar{
+    width:64px; height:64px; border-radius:50%; background:var(--surface-2);
+    border:2px solid var(--primary); display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:1.3rem; margin-bottom:12px;
+  }
+
+  .badge{ font-size:.62rem; font-weight:700; padding:3px 8px; border-radius:999px; }
+  .badge-premium{ background:var(--premium); color:#1C1200; }
+  .badge-free{ background:var(--surface-2); color:var(--text-muted); border:1px solid var(--border); }
+
+  .section-label{ font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); margin:18px 0 4px; }
+  .section-label:first-child{ margin-top:0; }
+
+  .pin-row{ display:flex; gap:10px; margin-bottom:18px; }
+  .pin-box{ width:44px; height:52px; border-radius:10px; background:var(--surface-2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-weight:700; }
+
+  .success-ring{
+    width:76px; height:76px; border-radius:50%; background:var(--success-dim);
+    display:flex; align-items:center; justify-content:center; margin:8px auto 16px;
+  }
+  .success-ring .core{ width:52px; height:52px; border-radius:50%; background:var(--success); display:flex; align-items:center; justify-content:center; color:#04150C; font-size:1.5rem; font-weight:800; }
+
+  .card{ background:var(--surface-2); border:1px solid var(--border); border-radius:14px; padding:14px; margin-bottom:16px; }
+  .card .row-item{ padding:8px 0; font-size:.78rem; }
+
+  /* contextual modal mockup */
+  .context-frame{ position:relative; }
+  .context-frame .dim{
+    position:absolute; inset:0; background:var(--overlay); border-radius:34px;
+  }
+  .bg-screen{ filter:saturate(.7); }
+  .sheet-modal{
+    position:absolute; left:0; right:0; bottom:0; background:var(--surface);
+    border-radius:22px 22px 0 0; padding:20px 18px 22px; box-shadow:0 -10px 30px rgba(0,0,0,.4);
+  }
+  .grabber{ width:36px; height:4px; border-radius:2px; background:var(--border); margin:0 auto 14px; }
+  .lock-line{ display:flex; align-items:center; gap:8px; font-size:.78rem; color:var(--premium); margin-bottom:10px; font-weight:700; }
+
+  .plan{ display:flex; align-items:center; justify-content:space-between; border:1px solid var(--border); border-radius:12px; padding:11px 13px; margin-bottom:10px; font-size:.82rem; }
+  .plan.selected{ border-color:var(--premium); color:var(--premium); }
+  .plan .p{ font-weight:700; }
+
+  .why{ font-size:.7rem; color:var(--text-muted); text-align:center; margin-top:8px; line-height:1.4; }
+
+  .toggle{
+    width:40px; height:22px; border-radius:999px; background:var(--primary); position:relative; flex:none;
+  }
+  .toggle .knob{ position:absolute; top:2px; right:2px; width:18px; height:18px; border-radius:50%; background:#fff; }
+
+  .footnote{ max-width:1180px; margin:40px auto 0; font-size:.8rem; color:#6B6B72; line-height:1.6; }
+  .footnote code{ background:#e8e6ee; padding:1px 6px; border-radius:4px; }
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <h1>FitFlow — Screen Previews: Flow Gaps</h1>
+  <div class="flow">Fills the gaps flagged in the 17-screen flow · <b>18</b> Profile/Account · <b>19</b> Forgot Password · <b>20</b> Reset Password · <b>21</b> Booking Confirmation · <b>22</b> Premium Paywall shown as a contextual gate, not a linear step</div>
+</div>
+
+<div class="group">
+  <div class="group-label">18 · Profile / Account — new, sits behind Home's avatar/settings icon</div>
+  <div class="row">
+    <div class="cell">
+      <div class="phone">
+        <div class="stripe-top short"></div>
+        <div class="back-btn">‹</div>
+        <div class="sheet tall tight">
+          <div class="avatar" style="width:52px; height:52px; margin-bottom:8px;">J</div>
+          <div class="h1t" style="font-size:1.05rem;">Julietta Cross</div>
+          <div class="sub" style="margin-bottom:6px;">julie234@mail.com</div>
+
+          <div class="section-label">Your details</div>
+          <div class="row-item"><span class="k">Gender</span><span class="v">Female <span class="chev">›</span></span></div>
+          <div class="row-item"><span class="k">Age</span><span class="v">36 <span class="chev">›</span></span></div>
+          <div class="row-item"><span class="k">Weight</span><span class="v">54 kg <span class="chev">›</span></span></div>
+          <div class="row-item"><span class="k">Goal</span><span class="v">Get fitter <span class="chev">›</span></span></div>
+
+          <div class="section-label">Subscription</div>
+          <div class="row-item">
+            <span class="k">Plan</span>
+            <span class="v" style="display:flex; align-items:center; gap:8px;">
+              <span class="badge badge-free">FREE</span> Upgrade <span class="chev">›</span>
+            </span>
+          </div>
+
+          <div class="section-label">Account</div>
+          <div class="row-item"><span class="k">Notifications</span><span class="toggle"><span class="knob"></span></span></div>
+          <div class="row-item"><span class="k">Change password</span><span class="chev">›</span></div>
+          <div class="row-item"><span class="k" style="color:var(--error);">Log out</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="group">
+  <div class="group-label">19 · Forgot Password &nbsp;→&nbsp; 20 · Reset Password — new, off the "Forgot Password" link on Login</div>
+  <div class="row">
+    <div class="cell">
+      <div class="phone">
+        <div class="stripe-top"></div>
+        <div class="back-btn">‹</div>
+        <div class="sheet">
+          <div class="h1t">Forgot your <b>password?</b></div>
+          <div class="sub">Enter the email on your account and we'll send a 4-digit code to reset it.</div>
+          <div class="field placeholder">Email</div>
+          <div style="flex:1;"></div>
+          <div class="btn btn-primary">Send Code ›</div>
+        </div>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="phone">
+        <div class="stripe-top"></div>
+        <div class="back-btn">‹</div>
+        <div class="sheet">
+          <div class="h1t">Create a <b>new password</b></div>
+          <div class="sub">Code sent to julie234@mail.com</div>
+          <div class="pin-row">
+            <div class="pin-box">7</div><div class="pin-box">3</div><div class="pin-box">4</div><div class="pin-box" style="color:var(--text-muted);">·</div>
+          </div>
+          <div class="field placeholder">New password</div>
+          <div class="field placeholder">Confirm password</div>
+          <div style="flex:1;"></div>
+          <div class="btn btn-primary">Reset Password ›</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="group">
+  <div class="group-label">21 · Booking Confirmation — new, replaces the dead end after "Take Appointment ›"</div>
+  <div class="row">
+    <div class="cell">
+      <div class="phone">
+        <div class="stripe-top"></div>
+        <div class="sheet flush" style="justify-content:flex-start; padding-top:64px;">
+          <div class="success-ring"><div class="core">✓</div></div>
+          <div class="h1t" style="text-align:center;">Appointment <b>confirmed</b></div>
+          <div class="sub" style="text-align:center;">You're booked with Maria — we'll remind you 1 hour before.</div>
+
+          <div class="card">
+            <div class="row-item"><span class="k">Trainer</span><span class="v">Maria Schleifer</span></div>
+            <div class="row-item"><span class="k">Program</span><span class="v" style="display:flex; gap:6px; align-items:center;">Lower Body Strength <span class="badge badge-premium">PRO</span></span></div>
+            <div class="row-item"><span class="k">When</span><span class="v">Fri 2 May · 5:00 PM</span></div>
+          </div>
+
+          <div style="flex:1;"></div>
+          <div class="btn btn-ghost" style="margin-bottom:10px;">Add to Calendar</div>
+          <div class="btn btn-primary">Done</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="group">
+  <div class="group-label">22 · Premium Paywall — shown as a contextual gate over Book Appointment, not a fixed step 17</div>
+  <div class="row">
+    <div class="cell">
+      <div class="phone context-frame">
+        <div class="stripe-top bg-screen"></div>
+        <div class="sheet bg-screen">
+          <div class="back-btn">‹</div>
+          <div style="height:8px;"></div>
+          <div class="card" style="margin-top:56px;">
+            <div class="row-item"><span class="v">Lower Body Strength</span><span class="badge badge-premium">PRO</span></div>
+          </div>
+          <div style="flex:1;"></div>
+          <div class="btn btn-premium">Take Appointment ›</div>
+        </div>
+        <div class="dim"></div>
+        <div class="sheet-modal">
+          <div class="grabber"></div>
+          <div class="lock-line">🔒 Lower Body Strength is a PRO program</div>
+          <div class="h1t" style="font-size:1.05rem;">Unlock <b>PRO</b> to book it</div>
+          <div class="sub" style="margin-bottom:14px;">Get every trainer, every plan — cancel anytime.</div>
+          <div class="plan selected"><span class="p">Monthly</span><span>$19.99/m</span></div>
+          <div class="plan"><span class="p">Yearly</span><span>$129.99/y</span></div>
+          <div class="btn btn-premium" style="margin-top:6px;">Subscribe Now</div>
+          <div class="why">Triggered from any PRO-tagged workout, trainer, or appointment — same screen, different entry point.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footnote">
+  Palette carried over from your existing 17 screens: <code>--bg #0E0E11</code> · <code>--surface #1A1A1E</code> · <code>--primary #8B3FFA</code> · <code>--premium #F0B429</code> · <code>--error #E5484D</code>, plus <code>--success #3DD68C</code> added for confirmation states (new here, since none of the original 17 needed a success color).
+</div>
+
+</body>
+</html>

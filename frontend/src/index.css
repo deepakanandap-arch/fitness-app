@@ -1,0 +1,49 @@
+:root {
+  --bg: #0e0e11;
+  --surface: #1a1a1e;
+  --surface-2: #222227;
+  --border: #2a2a2f;
+  --text: #ffffff;
+  --text-muted: #8c8c93;
+  --primary: #8b3ffa;
+  --primary-hover: #a565fb;
+  --primary-dim: rgba(139, 63, 250, 0.14);
+  --premium: #f0b429;
+  --premium-dim: rgba(240, 180, 41, 0.12);
+  --error: #e5484d;
+  --success: #3dd68c;
+  --success-dim: rgba(61, 214, 140, 0.12);
+  --overlay: rgba(6, 6, 8, 0.72);
+  --font-sans: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: var(--font-sans);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+button {
+  font-family: inherit;
+}

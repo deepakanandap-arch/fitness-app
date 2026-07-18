@@ -1,0 +1,36 @@
+.splash {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: var(--bg);
+  padding: 24px;
+  text-align: center;
+}
+
+.splash-logo {
+  width: 74px;
+  height: 74px;
+  border-radius: 20px;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.splash-title {
+  color: var(--text);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.splash-tagline {
+  color: var(--text-muted);
+  font-size: 12px;
+}

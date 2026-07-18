@@ -1,0 +1,363 @@
+<!--
+  Source: claude.ai/design/p/27a33c6e-56b6-4591-9ff2-ff85c82d0148?file=Fitness+App+Screens.dc.html
+  Original 17-screen flow (splash -> onboarding -> auth -> profile setup ->
+  home -> workouts -> trainers -> appointment -> premium). Kept verbatim for
+  reference; superseded palette values (--bg/--primary/etc.) are the ones in
+  design/flow-gaps.html and frontend/src/index.css, not the inline colors below.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style>
+  body{margin:0;background:#0a0a0c;font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif}
+  a{color:#a855f7}
+  a:hover{color:#c084fc}
+  .phone{width:300px;height:650px;border-radius:34px;overflow:hidden;position:relative;background:#141416;box-shadow:0 20px 50px rgba(0,0,0,0.5);flex:none;border:1px solid rgba(255,255,255,0.06)}
+  .lbl{font-size:12px;color:rgba(255,255,255,0.4);margin:0 0 10px 2px;font-weight:600;letter-spacing:0.02em}
+  .col{display:flex;flex-direction:column;gap:8px}
+  .grid{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+  .row{display:flex;gap:10px;align-items:center}
+  .pill-btn{display:inline-flex;align-items:center;gap:6px;background:#a855f7;color:#fff;border:none;border-radius:24px;padding:12px 22px;font-size:14px;font-weight:600;cursor:pointer}
+  .gold-btn{background:#f0b429;color:#1a1200}
+  .ghost-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
+  .field{background:rgba(255,255,255,0.06);border-radius:10px;padding:12px 14px;font-size:13px;color:rgba(255,255,255,0.85)}
+  .dot{width:20px;height:4px;border-radius:2px;background:rgba(255,255,255,0.2)}
+  .dot-on{background:#a855f7;width:22px}
+</style>
+</helmet>
+
+<div style="max-width:1400px;margin:0 auto;padding:40px 44px 80px">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+    <div style="width:4px;height:26px;background:#a855f7;border-radius:2px"></div>
+    <h1 style="color:#fff;font-size:26px;font-weight:700;margin:0">Screen Previews — Flow Order</h1>
+  </div>
+  <div style="color:rgba(255,255,255,0.4);font-size:13px;margin:0 0 30px 16px">Splash → Onboarding → Auth → Profile setup → Home → Workouts → Trainers → Appointment → Premium</div>
+
+  <div class="grid">
+
+    <!-- 01 Splash -->
+    <div class="col"><div class="lbl">01 · Splash / Logo</div>
+    <div class="phone" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+      <div style="width:74px;height:74px;border-radius:20px;background:#a855f7;display:flex;align-items:center;justify-content:center;color:#fff;font-size:34px;font-weight:700">F</div>
+      <div style="color:#fff;font-size:19px;font-weight:700;letter-spacing:0.02em">FitFlow</div>
+      <div style="color:rgba(255,255,255,0.35);font-size:11px">your journey to a stronger you</div>
+    </div></div>
+
+    <!-- 02 Onboarding 1 -->
+    <div class="col"><div class="lbl">02 · Onboarding — Coach</div>
+    <div class="phone">
+      <image-slot id="ob1" style="width:100%;height:100%" shape="rect" placeholder="photo: coach lunging exercise"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,12,0.95) 0%,rgba(10,10,12,0.3) 45%,transparent 65%)"></div>
+      <div style="position:absolute;bottom:36px;left:0;right:0;text-align:center;padding:0 24px">
+        <div style="color:#fff;font-size:20px;line-height:1.35;margin-bottom:18px">Meet your coach,<br><strong>start your journey</strong></div>
+        <div class="row" style="justify-content:center"><div class="dot dot-on"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+    </div></div>
+
+    <!-- 03 Onboarding 2 -->
+    <div class="col"><div class="lbl">03 · Onboarding — Plan</div>
+    <div class="phone">
+      <image-slot id="ob2" style="width:100%;height:100%" shape="rect" placeholder="photo: woman jump rope, gym"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,12,0.95) 0%,rgba(10,10,12,0.3) 45%,transparent 65%)"></div>
+      <div style="position:absolute;bottom:36px;left:0;right:0;text-align:center;padding:0 24px">
+        <div style="color:#fff;font-size:20px;line-height:1.35;margin-bottom:18px">Create a workout plan<br><strong>to stay fit</strong></div>
+        <div class="row" style="justify-content:center"><div class="dot"></div><div class="dot dot-on"></div><div class="dot"></div></div>
+      </div>
+    </div></div>
+
+    <!-- 04 Onboarding 3 -->
+    <div class="col"><div class="lbl">04 · Onboarding — Action</div>
+    <div class="phone">
+      <image-slot id="ob3" style="width:100%;height:100%" shape="rect" placeholder="photo: man deadlift, gym"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,12,0.95) 0%,rgba(10,10,12,0.3) 45%,transparent 65%)"></div>
+      <div style="position:absolute;bottom:36px;left:0;right:0;text-align:center;padding:0 24px">
+        <div style="color:#fff;font-size:20px;line-height:1.35;margin-bottom:18px">Action is the<br><strong>key to all success</strong></div>
+        <button class="pill-btn" style="margin-bottom:16px">Start Now ›</button>
+        <div class="row" style="justify-content:center"><div class="dot"></div><div class="dot"></div><div class="dot dot-on"></div></div>
+      </div>
+    </div></div>
+
+    <!-- 05 Login -->
+    <div class="col"><div class="lbl">05 · Auth — Login</div>
+    <div class="phone">
+      <image-slot id="login-bg" style="width:100%;height:44%" shape="rect" placeholder="photo: woman stretching, gym"></image-slot>
+      <div style="position:absolute;top:0;left:0;right:0;padding:18px 24px;display:flex;gap:20px">
+        <div style="color:#a855f7;font-size:13px;font-weight:700;border-bottom:2px solid #a855f7;padding-bottom:4px">Login</div>
+        <div style="color:rgba(255,255,255,0.6);font-size:13px">Sign up</div>
+      </div>
+      <div style="position:absolute;top:44%;left:0;right:0;bottom:0;background:#141416;padding:24px;box-sizing:border-box;border-radius:24px 24px 0 0;margin-top:-24px;display:flex;flex-direction:column;gap:14px">
+        <div style="color:#fff;font-size:21px;font-weight:700;line-height:1.3">Welcome back,<br>Julietta</div>
+        <div class="field">Email</div>
+        <div class="field">Password</div>
+        <div style="text-align:right;color:#a855f7;font-size:11px">Forgot Password</div>
+        <div class="row" style="margin-top:auto;justify-content:space-between">
+          <div class="row"><div class="ghost-btn"></div><div class="ghost-btn">G</div></div>
+          <button class="pill-btn">Login ›</button>
+        </div>
+      </div>
+    </div></div>
+
+    <!-- 06 Signup -->
+    <div class="col"><div class="lbl">06 · Auth — Sign up</div>
+    <div class="phone">
+      <image-slot id="signup-bg" style="width:100%;height:34%" shape="rect" placeholder="photo: man workout, gym"></image-slot>
+      <div style="position:absolute;top:0;left:0;right:0;padding:18px 24px;display:flex;gap:20px">
+        <div style="color:rgba(255,255,255,0.6);font-size:13px">Login</div>
+        <div style="color:#a855f7;font-size:13px;font-weight:700;border-bottom:2px solid #a855f7;padding-bottom:4px">Sign up</div>
+      </div>
+      <div style="position:absolute;top:34%;left:0;right:0;bottom:0;background:#141416;padding:20px 24px;box-sizing:border-box;border-radius:24px 24px 0 0;margin-top:-24px;display:flex;flex-direction:column;gap:10px">
+        <div style="color:#fff;font-size:19px;font-weight:700">Hello <strong>newbie</strong>,</div>
+        <div style="color:rgba(255,255,255,0.4);font-size:11px;margin-bottom:4px">Enter your informations below or login with a other account</div>
+        <div style="color:#f87171;font-size:10px">You have entered an invalid email address.</div>
+        <div class="field" style="border:1px solid #f87171">julie234@mail</div>
+        <div class="field">Password</div>
+        <div class="field">Password again</div>
+        <div class="row" style="margin-top:auto;justify-content:space-between">
+          <div class="row"><div class="ghost-btn"></div><div class="ghost-btn">G</div></div>
+          <button class="pill-btn">Sign up ›</button>
+        </div>
+      </div>
+    </div></div>
+
+    <!-- 07 Verification -->
+    <div class="col"><div class="lbl">07 · Auth — Verification</div>
+    <div class="phone" style="padding:30px 26px;box-sizing:border-box;display:flex;flex-direction:column">
+      <div class="ghost-btn" style="margin-bottom:24px">‹</div>
+      <div style="color:#fff;font-size:20px;font-weight:700;margin-bottom:8px">Verification</div>
+      <div style="color:rgba(255,255,255,0.45);font-size:13px;margin-bottom:30px">Check your email. We've sent you the PIN at your email.</div>
+      <div class="row" style="justify-content:center;gap:14px;margin-bottom:20px">
+        <div style="width:38px;height:38px;border-bottom:2px solid #a855f7;color:#fff;font-size:20px;text-align:center">7</div>
+        <div style="width:38px;height:38px;border-bottom:2px solid #a855f7;color:#fff;font-size:20px;text-align:center">3</div>
+        <div style="width:38px;height:38px;border-bottom:2px solid #a855f7;color:#fff;font-size:20px;text-align:center">4</div>
+        <div style="width:38px;height:38px;border-bottom:2px solid rgba(255,255,255,0.2)"></div>
+      </div>
+      <div style="text-align:center;color:#a855f7;font-size:12px;margin-bottom:20px">Did you receive any code?</div>
+      <button class="pill-btn" style="justify-content:center">Verify</button>
+      <div style="margin-top:auto;background:rgba(255,255,255,0.04);border-radius:14px;padding:14px;display:grid;grid-template-columns:repeat(10,1fr);gap:6px;font-size:11px;color:#fff;text-align:center">
+        <sc-for list="{{ keys }}" as="k" hint-placeholder-count="20"><div style="padding:6px 0;background:rgba(255,255,255,0.05);border-radius:4px">{{ k }}</div></sc-for>
+      </div>
+    </div></div>
+
+    <!-- 08 Gender -->
+    <div class="col"><div class="lbl">08 · Setup — Gender</div>
+    <div class="phone" style="padding:36px 26px;box-sizing:border-box;display:flex;flex-direction:column">
+      <div style="color:#fff;font-size:20px;font-weight:700;margin-bottom:8px">Tell us about yourself!</div>
+      <div style="color:rgba(255,255,255,0.45);font-size:13px;line-height:1.5;margin-bottom:40px">To give you a better experience we need to know your gender</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:32px;margin:20px 0 auto">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <div style="width:96px;height:96px;border-radius:50%;background:#a855f7;display:flex;align-items:center;justify-content:center;color:#fff;font-size:34px">♂</div>
+          <div style="color:#fff;font-size:13px">Male</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <div style="width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);font-size:34px">♀</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:13px">Female</div>
+        </div>
+      </div>
+      <button class="pill-btn" style="align-self:flex-end">Next ›</button>
+    </div></div>
+
+    <!-- 09 Age -->
+    <div class="col"><div class="lbl">09 · Setup — Age</div>
+    <div class="phone" style="padding:36px 26px;box-sizing:border-box;display:flex;flex-direction:column">
+      <div style="color:#fff;font-size:20px;font-weight:700;margin-bottom:8px">How old are you ?</div>
+      <div style="color:rgba(255,255,255,0.45);font-size:13px;margin-bottom:20px">This helps us create your personalized plan</div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+        <div style="color:rgba(255,255,255,0.2);font-size:14px">33</div>
+        <div style="color:rgba(255,255,255,0.3);font-size:16px">34</div>
+        <div style="color:rgba(255,255,255,0.55);font-size:20px;border-bottom:2px solid #a855f7;padding-bottom:6px">35</div>
+        <div style="color:#fff;font-size:30px;font-weight:700;border-bottom:2px solid #a855f7;padding-bottom:6px;margin:2px 0">36</div>
+        <div style="color:rgba(255,255,255,0.55);font-size:20px">37</div>
+        <div style="color:rgba(255,255,255,0.3);font-size:16px">38</div>
+        <div style="color:rgba(255,255,255,0.2);font-size:14px">39</div>
+      </div>
+      <div class="row" style="justify-content:space-between;margin-top:20px">
+        <div class="ghost-btn">‹</div><button class="pill-btn">Next ›</button>
+      </div>
+    </div></div>
+
+    <!-- 10 Weight -->
+    <div class="col"><div class="lbl">10 · Setup — Weight</div>
+    <div class="phone" style="padding:36px 26px;box-sizing:border-box;display:flex;flex-direction:column">
+      <div style="color:#fff;font-size:20px;font-weight:700;margin-bottom:8px">What's your weight?</div>
+      <div style="color:rgba(255,255,255,0.45);font-size:13px;margin-bottom:20px">You can always change this later</div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px">
+        <div style="color:#fff;font-size:44px;font-weight:700">54 <span style="font-size:16px;font-weight:400;color:rgba(255,255,255,0.5)">kg</span></div>
+        <div style="display:flex;align-items:flex-end;gap:4px;height:44px">
+          <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="24">
+            <div style="width:2px;background:{{ t.c }};height:{{ t.h }}px;border-radius:2px"></div>
+          </sc-for>
+        </div>
+      </div>
+      <div class="row" style="justify-content:space-between;margin-top:20px">
+        <div class="ghost-btn">‹</div><button class="pill-btn">Next ›</button>
+      </div>
+    </div></div>
+
+    <!-- 11 Goal -->
+    <div class="col"><div class="lbl">11 · Setup — Goal</div>
+    <div class="phone" style="padding:36px 26px;box-sizing:border-box;display:flex;flex-direction:column">
+      <div style="color:#fff;font-size:20px;font-weight:700;margin-bottom:8px">What's your goal?</div>
+      <div style="color:rgba(255,255,255,0.45);font-size:13px;margin-bottom:20px">This helps us create your personalized plan</div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px">
+        <div style="color:rgba(255,255,255,0.25);font-size:15px">Gain Weight</div>
+        <div style="color:#fff;font-size:19px;font-weight:600;border-bottom:2px solid #a855f7;padding-bottom:8px;width:fit-content">Lose weight</div>
+        <div style="color:#fff;font-size:19px;font-weight:600;border-bottom:2px solid #a855f7;padding-bottom:8px;width:fit-content">Get fitter</div>
+        <div style="color:rgba(255,255,255,0.25);font-size:15px">Gain more flexible</div>
+        <div style="color:rgba(255,255,255,0.18);font-size:15px">Learn the basic</div>
+      </div>
+      <div class="row" style="justify-content:space-between;margin-top:20px">
+        <div class="ghost-btn">‹</div><button class="pill-btn">Next ›</button>
+      </div>
+    </div></div>
+
+    <!-- 12 Home Dashboard -->
+    <div class="col"><div class="lbl">12 · Home Dashboard</div>
+    <div class="phone" style="padding:22px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="color:#fff;font-size:19px;font-weight:700">Hello <strong>Julietta</strong>,</div>
+        <div style="color:rgba(255,255,255,0.4);font-size:12px">Good morning.</div>
+      </div>
+      <div class="row" style="justify-content:space-between"><div style="color:#fff;font-size:13px;font-weight:600">Today Workout Plan</div><div style="color:rgba(255,255,255,0.35);font-size:11px">Mon 26 Apr</div></div>
+      <div style="position:relative;height:110px;border-radius:16px;overflow:hidden">
+        <image-slot id="home-card" style="width:100%;height:100%" shape="rect" placeholder="photo: workout pair"></image-slot>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,12,0.9),transparent 60%)"></div>
+        <div style="position:absolute;bottom:10px;left:12px;color:#fff;font-size:13px;font-weight:600">Day 01 - Warm Up</div>
+        <div style="position:absolute;bottom:0;left:12px;transform:translateY(-2px);color:rgba(255,255,255,0.6);font-size:10px">07:00 - 08:00 AM</div>
+      </div>
+      <div class="row" style="justify-content:space-between"><div style="color:#fff;font-size:13px;font-weight:600">Workout Categories</div><div style="color:#a855f7;font-size:11px">See All</div></div>
+      <div class="row" style="gap:8px">
+        <div style="background:#a855f7;color:#fff;font-size:10px;padding:5px 10px;border-radius:12px">Beginner</div>
+        <div style="color:rgba(255,255,255,0.4);font-size:10px">Intermediate</div>
+        <div style="color:rgba(255,255,255,0.4);font-size:10px">Advance</div>
+      </div>
+      <div style="position:relative;height:70px;border-radius:14px;overflow:hidden">
+        <image-slot id="home-cat" style="width:100%;height:100%" shape="rect" placeholder="photo: training basics"></image-slot>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,12,0.9),transparent 60%)"></div>
+        <div style="position:absolute;bottom:6px;left:10px;color:#fff;font-size:11px;font-weight:600">Learn the Basic of Training</div>
+      </div>
+      <div style="color:#fff;font-size:13px;font-weight:600">New Workouts</div>
+      <div class="row" style="margin-top:auto;justify-content:space-between;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.4)">
+        <div>⌂</div><div>📊</div><div>♡</div><div style="width:20px;height:20px;border-radius:50%;background:#a855f7"></div>
+      </div>
+    </div></div>
+
+    <!-- 13 Workout Detail -->
+    <div class="col"><div class="lbl">13 · Workout Detail</div>
+    <div class="phone">
+      <image-slot id="wd-bg" style="width:100%;height:40%" shape="rect" placeholder="photo: warm-up stretch"></image-slot>
+      <div class="ghost-btn" style="position:absolute;top:18px;left:18px">‹</div>
+      <div style="position:absolute;top:40%;left:0;right:0;bottom:0;background:#141416;padding:22px 24px;box-sizing:border-box;border-radius:24px 24px 0 0;margin-top:-24px;display:flex;flex-direction:column;gap:12px">
+        <div style="color:#a855f7;font-size:18px;font-weight:700">Day 01 - Warm Up</div>
+        <div style="color:rgba(255,255,255,0.4);font-size:11px">04 Workouts for Beginner</div>
+        <div class="row" style="gap:16px;color:rgba(255,255,255,0.6);font-size:11px"><span>▶ 60 min</span><span>🔥 350 Cal</span></div>
+        <div style="color:rgba(255,255,255,0.45);font-size:11px;line-height:1.5">Want your body to be healthy. Join our program with directions according to body's goals. Increasing physical strength is the goal of strenght training.</div>
+        <div class="row" style="gap:10px"><div style="width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.08)"></div><div style="flex:1"><div style="color:#fff;font-size:12px;font-weight:600">Simple Warm-Up Exercises</div><div style="color:rgba(255,255,255,0.35);font-size:10px">0:30</div></div></div>
+        <div class="row" style="gap:10px"><div style="width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.08)"></div><div style="flex:1"><div style="color:rgba(255,255,255,0.6);font-size:12px">Stability Training Basics</div></div></div>
+        <button class="pill-btn" style="justify-content:center;margin-top:auto">Start Workout</button>
+      </div>
+    </div></div>
+
+    <!-- 14 Trainers List -->
+    <div class="col"><div class="lbl">14 · Fitness Trainers List</div>
+    <div class="phone" style="padding:24px 22px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px">
+      <div class="row" style="gap:14px"><div class="ghost-btn" style="width:34px;height:34px">‹</div><div style="color:#fff;font-size:17px;font-weight:700">Fitness Trainers</div></div>
+      <div style="display:flex;flex-direction:column;gap:14px;overflow:hidden">
+        <sc-for list="{{ trainers }}" as="tr" hint-placeholder-count="6">
+          <div class="row" style="gap:10px">
+            <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);flex:none"></div>
+            <div style="flex:1">
+              <div class="row" style="gap:6px"><div style="color:#fff;font-size:12px;font-weight:600">{{ tr.name }}</div><div style="background:#a855f7;color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px">{{ tr.rating }}</div></div>
+              <div style="color:rgba(255,255,255,0.4);font-size:10px">{{ tr.spec }}</div>
+              <div style="color:#a855f7;font-size:10px">{{ tr.exp }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div></div>
+
+    <!-- 15 Trainer Profile -->
+    <div class="col"><div class="lbl">15 · Trainer Profile</div>
+    <div class="phone">
+      <image-slot id="trainer-bg" style="width:100%;height:46%" shape="rect" placeholder="photo: trainer portrait smiling"></image-slot>
+      <div class="ghost-btn" style="position:absolute;top:18px;left:18px">‹</div>
+      <div style="position:absolute;top:40%;left:0;right:0;bottom:0;background:#141416;padding:22px 24px;box-sizing:border-box;border-radius:24px 24px 0 0;display:flex;flex-direction:column;gap:16px">
+        <div class="row" style="justify-content:space-between">
+          <div><div style="color:#fff;font-size:16px;font-weight:700">Maria Schleifer</div><div style="color:rgba(255,255,255,0.4);font-size:11px">Functional Strength</div></div>
+          <div style="width:34px;height:34px;border-radius:50%;background:#a855f7;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px">☎</div>
+        </div>
+        <div class="row" style="justify-content:space-between;text-align:center">
+          <div><div style="color:#fff;font-size:15px;font-weight:700">6</div><div style="color:rgba(255,255,255,0.4);font-size:9px">Experience</div></div>
+          <div><div style="color:#fff;font-size:15px;font-weight:700">46</div><div style="color:rgba(255,255,255,0.4);font-size:9px">Completed</div></div>
+          <div><div style="color:#fff;font-size:15px;font-weight:700">25</div><div style="color:rgba(255,255,255,0.4);font-size:9px">Active Clients</div></div>
+        </div>
+        <div class="row" style="justify-content:space-between"><div style="color:#fff;font-size:13px;font-weight:600">Reviews</div><div style="background:#a855f7;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px">4.6</div></div>
+        <div style="color:rgba(255,255,255,0.4);font-size:10px">Alexa Cooper · 2d ago</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:11px;line-height:1.5">Had such an amazing session with Maria. She instantly picked up on the level of my fitness and adjusted the workout to suit me.</div>
+        <button class="pill-btn" style="justify-content:center;margin-top:auto">Book an Appointment</button>
+      </div>
+    </div></div>
+
+    <!-- 16 Appointment -->
+    <div class="col"><div class="lbl">16 · Book Appointment</div>
+    <div class="phone">
+      <image-slot id="appt-bg" style="width:100%;height:100%;filter:brightness(0.5)" shape="rect" placeholder="photo: strength training, dimmed"></image-slot>
+      <div class="ghost-btn" style="position:absolute;top:18px;left:18px">‹</div>
+      <div style="position:absolute;bottom:0;left:0;right:0;background:#141416;padding:22px 24px;box-sizing:border-box;border-radius:20px 20px 0 0;display:flex;flex-direction:column;gap:14px">
+        <div class="row" style="gap:10px"><div style="width:52px;height:52px;border-radius:10px;background:rgba(255,255,255,0.08)"></div>
+          <div><div class="row" style="gap:6px"><div style="color:#fff;font-size:13px;font-weight:600">Lower Body Strength</div><div style="background:#f0b429;color:#1a1200;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px">PRO</div></div>
+          <div style="color:rgba(255,255,255,0.4);font-size:11px">05 Workouts for Beginner</div></div>
+        </div>
+        <button class="pill-btn" style="justify-content:center">Take Appointment ›</button>
+        <div style="text-align:center;color:rgba(255,255,255,0.4);font-size:12px">Cancel</div>
+      </div>
+    </div></div>
+
+    <!-- 17 Premium -->
+    <div class="col"><div class="lbl">17 · Premium Paywall</div>
+    <div class="phone">
+      <image-slot id="prem-bg" style="width:100%;height:38%" shape="rect" placeholder="photo: intense training"></image-slot>
+      <div style="position:absolute;top:32%;left:0;right:0;bottom:0;background:#141416;padding:22px 24px;box-sizing:border-box;border-radius:24px 24px 0 0;display:flex;flex-direction:column;gap:14px">
+        <div style="color:#fff;font-size:19px;font-weight:700">Be Premium</div>
+        <div style="color:rgba(255,255,255,0.45);font-size:12px;line-height:1.5">Get unlimited access<br>When you subscribe, you'll get instant unlimited access.</div>
+        <div style="border:1.5px solid #f0b429;border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center">
+          <div><div style="color:#f0b429;font-size:13px;font-weight:700">Monthly</div><div style="color:rgba(255,255,255,0.4);font-size:10px">Pay monthly, cancel any time</div></div>
+          <div style="color:#fff;font-size:15px;font-weight:700">$19.99<span style="font-size:10px;color:rgba(255,255,255,0.4)">/m</span></div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center">
+          <div style="color:#fff;font-size:13px;font-weight:600">Yearly</div>
+          <div style="color:#fff;font-size:15px;font-weight:700">$129.99<span style="font-size:10px;color:rgba(255,255,255,0.4)">/y</span></div>
+        </div>
+        <button class="pill-btn gold-btn" style="justify-content:center;margin-top:auto">Subscribe Now</button>
+      </div>
+    </div></div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const ticks = Array.from({length:24}, (_,i)=>({h: 10+Math.round(18*Math.abs(Math.sin(i*0.7))), c: i===12?'#a855f7':'rgba(255,255,255,0.25)'}));
+    const keys = 'QWERTYUIOPASDFGHJKLZXCVBNM123'.split('').slice(0,20);
+    const trainers = [
+      {name:'Cristofer Arcand', rating:'4.8', spec:'High Intensity Training', exp:'7 years experience'},
+      {name:'Maria Schleifer', rating:'4.6', spec:'Functional Strength', exp:'6 years experience'},
+      {name:'Angel Max Stone', rating:'4.6', spec:'Strength Training', exp:'10 years experience'},
+      {name:'Desirae Dias', rating:'4.9', spec:'High Intensity Training', exp:'5 years experience'},
+      {name:'Cristofer Arcand', rating:'4.8', spec:'Functional Strength', exp:'4 years experience'},
+      {name:'Cristofer Arcand', rating:'4.2', spec:'High Intensity Training', exp:'7 years experience'},
+    ];
+    return { ticks, keys, trainers };
+  }
+}
+</script>
+</body>
+</html>
