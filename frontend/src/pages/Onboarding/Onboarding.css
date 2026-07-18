@@ -1,0 +1,85 @@
+.onboarding {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.onboarding-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--photo),
+    repeating-linear-gradient(
+      -45deg,
+      var(--surface) 0px,
+      var(--surface) 10px,
+      var(--bg) 10px,
+      var(--bg) 20px
+    );
+  background-size: cover, auto;
+  background-position: center, center;
+}
+
+.onboarding-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--bg) 0%,
+    rgba(14, 14, 17, 0.55) 45%,
+    transparent 65%
+  );
+}
+
+.onboarding-content {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  right: 0;
+  padding: 0 28px;
+  text-align: center;
+}
+
+.onboarding-headline {
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1.35;
+  margin-bottom: 20px;
+}
+
+.onboarding-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary);
+  color: var(--text);
+  border: none;
+  border-radius: 999px;
+  padding: 14px 26px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.onboarding-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.onboarding-dot {
+  width: 20px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.onboarding-dot.is-active {
+  background: var(--primary);
+  width: 22px;
+}
