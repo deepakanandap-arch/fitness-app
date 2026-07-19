@@ -57,10 +57,12 @@ After the screen is complete and I've passed the quiz:
   - Batman signal/rooftops = position + z-index
 - **Pause signal:** If I say "wait, explain that part again differently",
   stop and re-explain with a DIFFERENT analogy before moving on.
-- **New React concepts get flagged.** If a beat needs something ahead of my
-  Scrimba progress (JSX, components, props, useState), STOP and say:
-  "New concept — learn this in your Claude Project first, then come back."
-  Give me the concept name only. Do not teach React theory here in full.
+- **React is taught here too, same rules.** Decision made 2026-07-19: React
+  concepts (JSX, components, props, useState, etc.) are NOT deferred to my
+  Claude Project. When a beat needs one, flag it clearly as "New concept: X",
+  offer 2-3 analogy choices for it same as any other new concept, then run
+  the full guess-first / one-beat / attempt-twice rhythm on it — same as
+  HTML and CSS. Never skip the flag, but never defer the teaching either.
 - **Plain language.** No jargon walls. Short explanations, then action.
 
 ---
