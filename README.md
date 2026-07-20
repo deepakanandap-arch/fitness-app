@@ -10,7 +10,7 @@ A full-stack fitness app, built one screen at a time from a complete UI design (
 ## Screens (build roadmap)
 1. Splash / Logo ✅
 2. Onboarding (3 slides) ✅
-3. Login
+3. Login ✅
 4. Sign up
 5. Email verification
 6. Profile setup — Gender
