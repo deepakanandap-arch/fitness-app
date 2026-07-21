@@ -3,6 +3,7 @@ import Splash from './pages/Splash/Splash.jsx'
 import Onboarding from './pages/Onboarding/Onboarding.jsx'
 import Login from './pages/Login/Login.jsx'
 import Signup from './pages/Signup/Signup.jsx'
+import Verification from './pages/Verification/Verification.jsx'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/onboarding" element={<Onboarding />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/verification" element={<Verification />} />
     </Routes>
   )
 }
