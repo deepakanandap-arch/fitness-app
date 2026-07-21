@@ -4,29 +4,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  background: var(--bg);
-  padding: 24px;
   text-align: center;
+  padding: 12px 24px;
+  background: var(--bg);
+  gap: 14px;
 }
 
 .splash-logo {
-  width: 74px;
   height: 74px;
-  border-radius: 20px;
+  width: 74px;
+  border-radius: 5px;
   background: var(--primary);
+  color: var(--text);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text);
   font-size: 34px;
   font-weight: 700;
 }
 
 .splash-title {
   color: var(--text);
-  font-size: 19px;
   font-weight: 700;
+  font-size: 19px;
   letter-spacing: 0.02em;
 }
 
