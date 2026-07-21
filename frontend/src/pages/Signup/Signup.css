@@ -1,1 +1,109 @@
-/* No styles written yet — coming next session */
+.signup {
+    position:relative;
+    background-color: var(--bg);
+}
+
+.signup-photo {
+    height: 34vh;
+    background: repeating-linear-gradient(-45deg,
+    var(--surface) 0px,
+    var(--surface) 10px,
+    var(--bg) 10px,
+    var(--bg) 20px);
+}
+
+.signup-tabs {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    display: flex;
+    gap: 10px;
+}
+
+.signup-tab {
+    border-bottom: 2px solid transparent;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 700;
+    padding-bottom: 5px;
+
+}
+
+.signup-tab-active {
+    border-bottom-color: var(--primary);
+    color: var(--primary);
+}
+
+.signup-sheet {
+    background: var(--surface);
+    border-radius: 24px 24px 0 0;
+    margin-top: -24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.signup-heading {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+.signup-subtext {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.signup-field {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--text)
+
+}
+
+
+.signup-field::placeholder {
+    color: var(--text-muted);
+}
+
+.signup-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.signup-social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.signup-social button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: none;
+    color: var(--text);
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.signup-cta {
+    background: var(--primary);
+    color: var(--text);
+    border: none;
+    border-radius: 999px;
+    padding: 12px 22px;
+    font-size: 14px;
+    font-weight: 700;
+}
